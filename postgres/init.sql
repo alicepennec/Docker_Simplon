@@ -1,5 +1,6 @@
-CREATE TABLE if not exists data (
-    Id_bien SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS data (
+    Id SERIAL PRIMARY KEY,
+    Code_bien VARCHAR(20) UNIQUE,
     No_voie INTEGER,
     Type_voie TEXT,
     Voie TEXT,
@@ -7,6 +8,5 @@ CREATE TABLE if not exists data (
     Surface_carrez FLOAT,
     Surface_total INTEGER,
     Type_local TEXT,
-    Id_commune INTEGER,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    Id_commune INTEGER
 );

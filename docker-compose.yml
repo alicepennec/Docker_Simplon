@@ -19,6 +19,12 @@ services:
     container_name: etl_script
     depends_on:
       - db
+    command: ["sh", "-c", "sleep 10 && python etl.py"]
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=mydatabase
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
 
   streamlit:
     build: ./streamlit
@@ -28,6 +34,11 @@ services:
     depends_on:
       - db
       - etl
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=mydatabase
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
 
 volumes:
   postgres_data:
